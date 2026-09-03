@@ -1,2 +1,92 @@
 @import "tailwindcss";
 @import "./components/theme.css";
+@import "./components/components.css";
+
+.mobile-menu-list.active .mobile-menu-item {
+    transform: translate(0px, 0px);
+}
+
+.mobile-menu-list .mobile-menu-item:nth-child(1) {
+    transition-delay: 400ms;
+}
+
+.mobile-menu-list .mobile-menu-item:nth-child(2) {
+    transition-delay: 300ms;
+}
+
+.mobile-menu-list .mobile-menu-item:nth-child(3) {
+    transition-delay: 200ms;
+}
+
+.mobile-menu-list .mobile-menu-item:nth-child(4) {
+    transition-delay: 100ms;
+}
+
+.mobile-menu-list .mobile-menu-item:nth-child(5) {
+    transition-delay: 0ms;
+}
+
+.mobile-menu-list.active .mobile-menu-item:nth-child(1) {
+    top: 0rem;
+    left: -5rem;
+    transition-delay: 0ms;
+}
+
+.mobile-menu-list.active .mobile-menu-item:nth-child(2) {
+    top: -2rem;
+    left: -3rem;
+    transition-delay: 100ms;
+}
+
+.mobile-menu-list.active .mobile-menu-item:nth-child(3) {
+    /*top: -4rem;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    top: -2rem;
+    left: 2rem;
+    transition-delay: 200ms;
+}
+
+.mobile-menu-list.active .mobile-menu-item:nth-child(4) {
+    /*top: -2rem;*/
+    /*left: 3rem;*/
+    top: 0rem;
+    left: 5rem;
+    transition-delay: 300ms;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 16px;
+
+    @media screen and (min-width: 640px) {
+        scroll-padding-top: 80px;
+    }
+}
+
+header ul li.active:before {
+    transform: scaleX(1);
+}
+
+.mobile-menu-list div.active {
+    color: #22c55e;
+}
+
+#main-header.active:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media screen and (min-width: 640px) {
+    #main-header:before {
+        display: none;
+    }
+}
+
+#experiences-list li:nth-child(2n+1) .logo {
+    @apply -left-20;
+}
+
+#experiences-list li:nth-child(2n) .logo {
+    @apply -right-20;
+}

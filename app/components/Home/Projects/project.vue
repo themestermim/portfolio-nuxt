@@ -1,0 +1,98 @@
+<template>
+    <section class="grid grid-cols-1 relative">
+        <!--logo-->
+        <div class={`size-10 p-1 rounded-full bg-white absolute top-6 -left-11 flex items-center justify-center
+            ${reverse ? 'lg:left-auto lg:-right-14 xl:top-12 lg:-translate-x-1'
+            : 'lg:-left-12 lg:top-24 xl:top-36 lg:-translate-x-1' }`}>
+            <Image src={projects.logo} class="object-contain rounded-full" alt={projects.title} title={projects.title}
+                width="100%" height="100%" />
+
+            <svg class={`size-6 text-gray-400 absolute top-0 lg:top-1/2 -translate-y-full lg:-translate-y-1/2 left-6
+                ${reverse ? 'lg:rotate-180 lg:-left-4' : 'lg:left-8' }`} aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M10.271 5.575C8.967 4.501 7 5.43 7 7.12v9.762c0 1.69 1.967 2.618 3.271 1.544l5.927-4.881a2 2 0 0 0 0-3.088l-5.927-4.88Z"
+                    clip-rule="evenodd" />
+            </svg>
+        </div>
+
+        <!--image-->
+        <div class="group">
+            <a href={projects.link} title={projects.title} aria-label={projects.title} target="_blank"
+                class="w-full relative pt-[56.25%] block">
+                <div class="absolute top-0 left-0 size-full bg-no-repeat bg-cover bg-top transition-all duration-4000 group-hover:bg-bottom rounded-lg ease-linear"
+                    style={{ backgroundImage: `url(${projects.src})` }} />
+            </a>
+        </div>
+
+        <!-- description -->
+        <div class="mt-4 lg:mt-0 lg:p-4 flex flex-col justify-between gap-4">
+            <div>
+                <h2 class="text-gray-200 text-xl"> <a href={projects.link} target="_blank"> {projects.title} </a> </h2>
+
+                <p class="text-gray-400 text-base leading-7 tracking-wide line-clamp-3 mt-2 cursor-default">
+                    {projects.description} </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href={projects.link}
+                    class="h-10 px-10 rounded-md bg-transparent border border-indigo-500 hover:bg-indigo-500 transition-all inline-flex items-center text-gray-100 text-lg"
+                    target="_blank" title={projects.title} aria-label={projects.title}> Demo </a>
+                <button type="button" role="button"
+                    class="h-10 px-10 rounded-md transition-all inline-flex items-center text-gray-100 text-lg border border-green-600 bg-transparent hover:bg-green-600"
+                    onclick=`toggleDetailModal(${JSON.stringify(projects)})`> Detail </button>
+            </div>
+        </div>
+    </section>
+</template>
+
+<script setup>
+
+defineProps({
+    projects: {
+        type: Object,
+        default: () => ({}),
+    },
+    reverse: {
+        type: Boolean,
+        default: true,
+    },
+})
+
+const showElement = (id) => {
+    const elem = document.getElementById(id)
+    elem.classList.remove("hidden")
+}
+
+const showContent = (id, obj) => {
+    const elem = document.getElementById(id)
+    const title = elem.querySelector("h2")
+    const description = elem.querySelector("p")
+    const list = elem.querySelector("ul")
+    const a = elem.querySelector("a")
+
+    list.innerHTML = ""
+    title.textContent = obj.title
+    description.textContent = obj.description
+    obj.techList.forEach(tech => {
+        const li = document.createElement("li")
+        li.classList.add('px-4', 'h-9', 'rounded', 'bg-gray-900', 'text-green-500', 'select-none', 'flex', 'items-center', 'gap-2')
+        const span = document.createElement("span")
+        span.textContent = tech.title
+        span.classList.add('text-sm')
+        const img = document.createElement("img")
+        img.src = tech.icon
+        img.classList.add('h-6', 'flex-none')
+        li.appendChild(img)
+        li.appendChild(span)
+        list.appendChild(li)
+    })
+    a.href = obj.link
+}
+
+window.toggleDetailModal = (obj) => {
+    showElement('exp-layer')
+    showElement('exp-content')
+    showContent('exp-content', obj)
+}
+</script>

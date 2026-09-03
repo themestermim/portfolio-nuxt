@@ -1,0 +1,33 @@
+<template>
+    <div id="experiences-section" class="mt-16 container max-w-3xl seprate-section">
+        <h2 class="text-3xl text-center text-gray-100"> Experiences </h2>
+        <ul id="experiences-list" class="list-none mt-6">
+            {experiencesList.map(experience => (
+            <li
+                class="relative p-4 bg-gray-800 rounded-lg mt-4 first:mt-0 before:absolute before:content-[''] before:hidden lg:before:block before:top-9 before:size-0 before:border-[12px] before:border-y-transparent odd:before:border-l-transparent odd:before:border-r-gray-800 even:before:border-l-gray-800 even:before:border-r-transparent odd:before:-left-6 even:before:-right-6">
+                <div class="flex items-center gap-4">
+                    <!-- logo -->
+                    <div class="size-14 p-2 rounded-full border border-gray-600 bg-gray-900 lg:absolute lg:top-4 logo">
+                        <img src={experience.logo} alt={`${experience.role} at ${experience.name}`}
+                            class="h-full object-contain rounded-full">
+                    </div>
+
+                    <!-- stack -->
+                    <div class="flex flex-col gap-1">
+                        <h3 class="text-gray-100 text-xl font-medium"> {experience.role} &nbsp; at &nbsp; <small
+                                class="font-normal text-gray-300"> {experience.name} </small> </h3>
+                        <time class="text-gray-400 text-sm font-normal"> {experience.start} - {experience.end} </time>
+                    </div>
+                </div>
+
+                <p class="text-base text-gray-200 mt-4 tracking-wide leading-7">
+                    {experience.description}
+                </p>
+            </li>
+            ))}
+        </ul>
+    </div>
+</template>
+
+<script setup>
+</script>

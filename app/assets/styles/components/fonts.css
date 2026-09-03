@@ -1,23 +1,15 @@
-/* @font-face {
-	font-family: BonyadeKoodak;
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("./fonts/koodak/regular.woff2") format("woff2");
-}
-
 @font-face {
-	font-family: BonyadeKoodak;
-	font-style: normal;
+	font-family: 'Archivo';
+	src: url('./archivo/medium.woff') format('woff');
+	/*font-optical-sizing: auto;*/
 	font-weight: 500;
-	font-display: swap;
-	src: url("./fonts/koodak/medium.woff2") format("woff2");
+	font-style: normal;
 }
 
 @font-face {
-	font-family: BonyadeKoodak;
+	font-family: 'Archivo';
+	src: url('./archivo/regular.woff') format('woff');
+	/*font-optical-sizing: auto;*/
+	font-weight: 400;
 	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url("./fonts/koodak/bold.woff2") format("woff2");
-} */
+}
