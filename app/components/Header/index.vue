@@ -1,6 +1,8 @@
 <template>
-    <header id="main-header"
-        class="fixed bottom-4 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:h-16 sm:bg-gray-800 sm:w-full z-10 sm:sticky sm:top-0 sm:left-0">
+    <header id="main-header" :class="{
+        'fixed bottom-4 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:h-16 sm:bg-gray-800 sm:w-full z-10 sm:sticky sm:top-0 sm:left-0': true,
+        'active': showSmHeader
+    }">
         <ul
             class="hidden container list-none sm:flex items-center sm:gap-6 sm:h-full text-gray-100 sm:*:h-10 sm:*:relative sm:*:flex *:items-center *:cursor-pointer *:before:hidden sm:*:before:block *:before:absolute *:before:content-[''] *:before:w-full *:before:h-0.5 *:before:transition-transform *:before:bg-green-500 *:before:bottom-0 *:before:rounded *:before:origin-center">
             <li class="hover:before:scale-x-100 before:scale-x-0">
@@ -17,9 +19,10 @@
             </li>
         </ul>
 
-        <button id="mobile-menu-btn" type="button" role="button" aria-label="mobile-header"
-            class="size-14 relative rounded-full bg-gray-800 transition-all flex items-center justify-center sm:hidden text-gray-200 border border-gray-600"
-            @click="toggleMenu">
+        <button id="mobile-menu-btn" type="button" role="button" aria-label="mobile-header" :class="{
+            'size-14 relative rounded-full bg-gray-800 transition-all flex items-center justify-center sm:hidden text-gray-200 border border-gray-600': true,
+            'bg-gray-700': showSmHeader
+        }" @click="toggleMenu">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -27,21 +30,32 @@
             </svg>
         </button>
 
-        <div class="contents sm:hidden mobile-menu-list text-sm font-medium *:transition-all *:absolute">
-            <div
-                class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200">
+        <div :class="{
+            'contents sm:hidden mobile-menu-list text-sm font-medium *:transition-all *:absolute': true,
+            'active': showSmHeader
+        }">
+            <div :class="{
+                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200': true,
+                'opacity-0 invisible': !showSmHeader
+            }">
                 <a href="#hero-section"> Home </a>
             </div>
-            <div
-                class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200">
+            <div :class="{
+                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200': true,
+                'opacity-0 invisible': !showSmHeader
+            }">
                 <a href="#skills-section"> Projects </a>
             </div>
-            <div
-                class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200">
+            <div :class="{
+                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200': true,
+                'opacity-0 invisible': !showSmHeader
+            }">
                 <a href="#experiences-section"> Experiences </a>
             </div>
-            <div
-                class="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200">
+            <div :class="{
+                'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 invisible bg-gray-700 px-2.5 py-0.5 rounded mobile-menu-item text-gray-200': true,
+                'opacity-0 invisible': !showSmHeader
+            }">
                 <a href="#contact-section"> Contacts </a>
             </div>
         </div>
@@ -51,30 +65,30 @@
 <script setup>
 const showSmHeader = ref(false)
 
+const toggleMenu = () => {
+    showSmHeader.value = !showSmHeader.value
+}
 
-onMounted(() => {
-    const mobileMenuList = document.querySelector(".mobile-menu-list")
-    const mobileMenuItems = document.querySelectorAll(".mobile-menu-item")
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn")
-    const mainHeader = document.getElementById("main-header")
+// onMounted(() => {
+// const mobileMenuList = document.querySelector(".mobile-menu-list")
+// const mobileMenuItems = document.querySelectorAll(".mobile-menu-item")
+// const mobileMenuBtn = document.getElementById("mobile-menu-btn")
+// const mainHeader = document.getElementById("main-header")
 
-    const toggleMenu = () => {
-        showSmHeader.value = !showSmHeader.value
-        if (showSmHeader.value) {
-            mobileMenuItems.forEach(item => {
-                item.classList.remove('opacity-0', 'invisible')
-            })
-            mobileMenuList.classList.add('active')
-            mobileMenuBtn.classList.add('bg-gray-700')
-            mainHeader.classList.add('active')
-        } else {
-            mobileMenuItems.forEach(item => {
-                item.classList.add('opacity-0', 'invisible')
-            })
-            mobileMenuList.classList.remove('active')
-            mobileMenuBtn.classList.remove('bg-gray-700')
-            mainHeader.classList.remove('active')
-        }
-    }
-})
+// if (showSmHeader.value) {
+//     mobileMenuItems.forEach(item => {
+//         item.classList.remove('opacity-0', 'invisible')
+//     })
+//     mobileMenuList.classList.add('active')
+//     mobileMenuBtn.classList.add('bg-gray-700')
+//     mainHeader.classList.add('active')
+// } else {
+//     mobileMenuItems.forEach(item => {
+//         item.classList.add('opacity-0', 'invisible')
+//     })
+//     mobileMenuList.classList.remove('active')
+//     mobileMenuBtn.classList.remove('bg-gray-700')
+//     mainHeader.classList.remove('active')
+// }
+// })
 </script>
