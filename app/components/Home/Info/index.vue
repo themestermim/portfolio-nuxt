@@ -12,7 +12,7 @@
 
             <div class="order-2 md:order-1 flex">
                 <div class="h-60 md:h-80 lg:h-96 xl:h-[28rem]">
-                    <Image class="w-auto h-full" src="/images/home/myself.webp" alt="Mehran Mahmoudi" />
+                    <NuxtImg class="w-auto h-full" src="/assets/images/home/myself.webp" alt="Mehran Mahmoudi" width="448" height="448" sizes="sm:320px md:384px lg:448px" />
                 </div>
             </div>
         </div>

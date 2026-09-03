@@ -174,15 +174,15 @@
             </li>
             <!--seo-->
             <li class="" title="SOE">
-                <Image src={SeoImage} alt="SEO" class="h-16 lg:h-14 w-auto" />
+                <NuxtImg src="/assets/images/skills/seo.png" alt="SEO" class="h-16 lg:h-14 w-auto" width="64" height="64" />
             </li>
             <!--php-->
             <li class="" title="PHP">
-                <img src='/assets/skills/php.svg' alt="PHP" class="h-10 lg:h-9 w-auto">
+                <NuxtImg src="/assets/images/skills/php.svg" alt="PHP" class="h-10 lg:h-9 w-auto" width="40" height="40" />
             </li>
             <!--laravel-->
             <li class="" title="Laravel Blade">
-                <img src='/assets/skills/laravel.svg' alt="Laravel Blade" class="h-14 lg:h-12 w-auto">
+                <NuxtImg src="/assets/images/skills/laravel.svg" alt="Laravel Blade" class="h-14 lg:h-12 w-auto" width="56" height="56" />
             </li>
         </ul>
     </div>
